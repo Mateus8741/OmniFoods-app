@@ -6,10 +6,10 @@ import Animated, { BounceIn } from 'react-native-reanimated';
 import { AppTabBottomTabParamList } from './AppTabNavigator';
 import { mapScreenToProps } from './mapScreenToProps';
 
-import { CustonIcons } from '~/components';
-import { useAppSafeArea } from '~/hooks';
-import { colors } from '~/theme/colors';
-import { useShadowProps } from '~/utils';
+import { CustonIcons } from '@/components';
+import { useAppSafeArea } from '@/hooks';
+import { colors } from '@/theme/colors';
+import { useShadowProps } from '@/utils';
 
 export function AppTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
   const { bottom } = useAppSafeArea();

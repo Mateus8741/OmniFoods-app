@@ -3,7 +3,7 @@ import React from 'react';
 
 import { AppTabBar } from './AppTabBar';
 
-import { HomeScreen } from '~/screens';
+import { HomeScreen } from '@/screens';
 
 export type AppTabBottomTabParamList = {
   HomeScreen: undefined;
