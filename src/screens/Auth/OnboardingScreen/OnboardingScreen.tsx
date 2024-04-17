@@ -3,6 +3,7 @@ import { View } from 'react-native';
 
 import { Box, SegmentCard, SegmentProps } from '@/components';
 import { useSegmentStorage } from '@/contexts';
+import { AuthScreenProps } from '@/routes';
 
 const segments = [
   { id: 1, segment: 'Pedir comida', source: { uri: 'https://picsum.photos/500/300' } },
@@ -12,11 +13,12 @@ const segments = [
   { id: 5, segment: 'Refeições', source: { uri: 'https://picsum.photos/500/700' } },
 ];
 
-export function OnboardingScreen() {
+export function OnboardingScreen({ navigation }: AuthScreenProps<'OnboardingScreen'>) {
   const { setSegment } = useSegmentStorage();
 
   function handleSegmentPress({ segment }: SegmentProps) {
     setSegment(segment);
+    navigation.navigate('LoginScreen');
   }
 
   return (
