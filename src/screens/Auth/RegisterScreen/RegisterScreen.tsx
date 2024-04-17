@@ -1,11 +1,27 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import { Pressable, Text, View } from 'react-native';
 
-import { Box, CustomButton, PasswordInput, TextInput } from '@/components';
+import { Box, CustomButton } from '@/components';
+import { FormTextInput } from '@/components/Form/FormTextInput';
 import { AuthScreenProps } from '@/routes';
+import { RegisterScheema, registerScheema } from '@/schemas/RegisterSchema';
 
 export function RegisterScreen({ navigation }: AuthScreenProps<'RegisterScreen'>) {
-  function handleCreateAccount() {
-    console.log('Login');
+  const { control, handleSubmit, reset } = useForm<RegisterScheema>({
+    resolver: zodResolver(registerScheema),
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      password: '',
+    },
+    mode: 'onChange',
+  });
+
+  function handleCreateAccount(data: RegisterScheema) {
+    console.log(data);
+    reset();
   }
 
   function handleGoBack() {
@@ -20,14 +36,14 @@ export function RegisterScreen({ navigation }: AuthScreenProps<'RegisterScreen'>
       </View>
 
       <View className="flex-grow">
-        <TextInput placeholder="Nome completo" />
-        <TextInput placeholder="Digite seu email" />
-        <TextInput placeholder="Celular" />
-        <PasswordInput placeholder="Digite sua senha" />
+        <FormTextInput control={control} name="name" placeholder="Nome completo" />
+        <FormTextInput control={control} name="email" placeholder="Digite seu email" />
+        <FormTextInput control={control} name="phone" placeholder="Celular" />
+        <FormTextInput control={control} name="password" placeholder="Digite sua senha" />
       </View>
 
       <View className="w-80 flex-grow self-center">
-        <CustomButton title="Criar conta" onPress={handleCreateAccount} />
+        <CustomButton title="Criar conta" onPress={handleSubmit(handleCreateAccount)} />
 
         <View className="mt-8 flex-row items-center gap-x-2 self-center">
           <Text className="font-bold text-base text-gray-subtitle">já tem uma conta?</Text>
