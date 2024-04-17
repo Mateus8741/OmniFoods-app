@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 
 import { Box, SegmentCard, SegmentProps } from '@/components';
+import { useSegmentStorage } from '@/contexts';
 
 const segments = [
   { id: 1, segment: 'Pedir comida', source: { uri: 'https://picsum.photos/500/300' } },
@@ -12,8 +13,10 @@ const segments = [
 ];
 
 export function OnboardingScreen() {
+  const { setSegment } = useSegmentStorage();
+
   function handleSegmentPress({ segment }: SegmentProps) {
-    console.log(`Segment: ${segment}`);
+    setSegment(segment);
   }
 
   return (

@@ -13,6 +13,7 @@ export function SegmentCard({ data, ...rest }: SegmentCardProps) {
   return (
     <TouchableOpacity
       className="mb-5 w-36 items-center justify-end overflow-hidden rounded-3xl"
+      activeOpacity={0.7}
       {...rest}>
       <Image source={{ uri: data.source.uri }} className="h-[150px] w-full rounded-3xl" />
 
