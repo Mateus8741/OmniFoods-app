@@ -1,10 +1,12 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
+
+import { Box } from '@/components';
 
 export function LoginScreen() {
   return (
-    <View>
+    <Box>
       <Text> LoginScreen </Text>
-    </View>
+    </Box>
   );
 }
