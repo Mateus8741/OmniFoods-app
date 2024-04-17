@@ -1,8 +1,8 @@
 export * from './BackButton';
 export * from './Box';
 export * from './CustomButton';
-// export * from './Form/FormPasswordInput';
-// export * from './Form/FormTextInput';
+export * from './Form/FormPasswordInput';
+export * from './Form/FormTextInput';
 export * from './Icons/CustonIcons';
 export * from './Loading';
 export * from './PasswordInput';

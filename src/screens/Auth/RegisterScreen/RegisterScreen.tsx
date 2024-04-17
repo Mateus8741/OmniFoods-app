@@ -2,8 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Pressable, Text, View } from 'react-native';
 
-import { Box, CustomButton } from '@/components';
-import { FormTextInput } from '@/components/Form/FormTextInput';
+import { Box, CustomButton, FormPasswordInput, FormTextInput } from '@/components';
 import { AuthScreenProps } from '@/routes';
 import { RegisterScheema, registerScheema } from '@/schemas/RegisterSchema';
 
@@ -39,7 +38,7 @@ export function RegisterScreen({ navigation }: AuthScreenProps<'RegisterScreen'>
         <FormTextInput control={control} name="name" placeholder="Nome completo" />
         <FormTextInput control={control} name="email" placeholder="Digite seu email" />
         <FormTextInput control={control} name="phone" placeholder="Celular" />
-        <FormTextInput control={control} name="password" placeholder="Digite sua senha" />
+        <FormPasswordInput control={control} name="password" placeholder="Digite sua senha" />
       </View>
 
       <View className="w-80 flex-grow self-center">
