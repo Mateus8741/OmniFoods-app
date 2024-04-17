@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import { Box } from '@/components';
+import { Box, PasswordInput, TextInput } from '@/components';
 
 export function LoginScreen() {
   return (
@@ -10,6 +10,9 @@ export function LoginScreen() {
         <Text className="font-bold text-3xl text-white">Bem vindo de volta!</Text>
         <Text className="font-bold text-base text-gray-subtitle">Entre na sua conta</Text>
       </View>
+
+      <TextInput placeholder="Digite seu email" />
+      <PasswordInput placeholder="Digite sua senha" />
     </Box>
   );
 }
