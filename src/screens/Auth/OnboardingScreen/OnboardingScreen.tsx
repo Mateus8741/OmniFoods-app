@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import { Box, SegmentCard } from '@/components';
+import { Box, SegmentCard, SegmentProps } from '@/components';
 
 const segments = [
   { id: 1, segment: 'Pedir comida', source: { uri: 'https://picsum.photos/500/300' } },
@@ -12,11 +12,15 @@ const segments = [
 ];
 
 export function OnboardingScreen() {
+  function handleSegmentPress({ segment }: SegmentProps) {
+    console.log(`Segment: ${segment}`);
+  }
+
   return (
     <Box>
       <View className="flex-row flex-wrap items-center justify-around">
         {segments.map((item) => (
-          <SegmentCard key={item.id} source={{ uri: item.source.uri }} segment={item.segment} />
+          <SegmentCard key={item.id} data={item} onPress={() => handleSegmentPress(item)} />
         ))}
       </View>
     </Box>
