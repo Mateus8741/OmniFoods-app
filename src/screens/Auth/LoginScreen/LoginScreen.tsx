@@ -2,14 +2,15 @@ import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { Box, CustomButton, PasswordInput, TextInput } from '@/components';
+import { AuthScreenProps } from '@/routes';
 
-export function LoginScreen() {
+export function LoginScreen({ navigation }: AuthScreenProps<'LoginScreen'>) {
   function handleLogin() {
     console.log('Login');
   }
 
   function handleCreateAccount() {
-    console.log('Create Account');
+    navigation.navigate('RegisterScreen');
   }
 
   return (
