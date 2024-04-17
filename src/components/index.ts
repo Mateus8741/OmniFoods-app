@@ -1,6 +1,6 @@
 export * from './BackButton';
 export * from './Box';
-export * from './Button';
+export * from './CustomButton';
 // export * from './Form/FormPasswordInput';
 // export * from './Form/FormTextInput';
 export * from './Icons/CustonIcons';
