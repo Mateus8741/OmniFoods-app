@@ -6,13 +6,20 @@ import { Box, PasswordInput, TextInput } from '@/components';
 export function LoginScreen() {
   return (
     <Box>
-      <View className="mt-20 items-center gap-y-2">
+      <View className="mt-20 flex-1 items-center gap-y-2">
         <Text className="font-bold text-3xl text-white">Bem vindo de volta!</Text>
         <Text className="font-bold text-base text-gray-subtitle">Entre na sua conta</Text>
       </View>
 
-      <TextInput placeholder="Digite seu email" />
-      <PasswordInput placeholder="Digite sua senha" />
+      <View className="flex-grow">
+        <TextInput placeholder="Digite seu email" />
+        <PasswordInput placeholder="Digite sua senha" />
+      </View>
+
+      <View className="flex-grow">
+        <TextInput placeholder="Digite seu email" />
+        <PasswordInput placeholder="Digite sua senha" />
+      </View>
     </Box>
   );
 }

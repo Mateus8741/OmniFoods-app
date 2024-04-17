@@ -9,7 +9,7 @@ interface Props {
   scrollable?: boolean;
 }
 
-export function Box({ children, scrollable = true }: Props) {
+export function Box({ children, scrollable = false }: Props) {
   const { top, bottom } = useAppSafeArea();
 
   const Container = scrollable ? ScrollView : View;
