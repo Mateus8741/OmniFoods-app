@@ -8,6 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors,
+      fontFamily: {
+        heading: 'Roboto_400Regular',
+        subtitle: 'Roboto_500Medium',
+        bold: 'Roboto_700Bold',
+      },
     },
   },
   plugins: [],
