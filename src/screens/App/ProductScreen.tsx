@@ -2,11 +2,14 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Image, Pressable, Text, View } from 'react-native';
 
 import { Box, CustomButton } from '@/components';
+import { useCarStore } from '@/contexts';
 import { AppScreenProps } from '@/routes';
 import { FormatCurrency } from '@/utils';
 
 export function ProductScreen({ route, navigation }: AppScreenProps<'ProductScreen'>) {
   const { product } = route.params;
+
+  const { addProduct } = useCarStore();
 
   function handleGoBack() {
     navigation.goBack();
@@ -30,9 +33,11 @@ export function ProductScreen({ route, navigation }: AppScreenProps<'ProductScre
         <Text className="my-2 font-heading text-2xl text-lime-400">
           {FormatCurrency(product.price)}
         </Text>
+
         <Text className="font-body mb-6 text-base leading-6 text-gray-300">
           {product.description}
         </Text>
+
         {product.ingredients.map((ingredient) => (
           <Text key={ingredient} className="font-body text-base leading-6 text-gray-300">
             {'\u2022'}
@@ -41,10 +46,8 @@ export function ProductScreen({ route, navigation }: AppScreenProps<'ProductScre
         ))}
       </View>
 
-      <View className="gap-5 p-5 pb-8">
-        <CustomButton title="Adicionar ao carrinho" />
-
-        {/* <LinkButton href="/" title="Ver carrinho" /> */}
+      <View className="p-5 pb-8">
+        <CustomButton title="Adicionar ao carrinho" onPress={() => addProduct(product)} />
       </View>
     </Box>
   );
