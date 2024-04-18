@@ -11,6 +11,12 @@ export function ProductScreen({ route, navigation }: AppScreenProps<'ProductScre
 
   const { addProduct } = useCarStore();
 
+  function handleAddProduct() {
+    addProduct(product);
+
+    navigation.goBack();
+  }
+
   function handleGoBack() {
     navigation.goBack();
   }
@@ -47,7 +53,7 @@ export function ProductScreen({ route, navigation }: AppScreenProps<'ProductScre
       </View>
 
       <View className="p-5 pb-8">
-        <CustomButton title="Adicionar ao carrinho" onPress={() => addProduct(product)} />
+        <CustomButton title="Adicionar ao carrinho" onPress={handleAddProduct} />
       </View>
     </Box>
   );
