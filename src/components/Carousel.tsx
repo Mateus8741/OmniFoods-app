@@ -1,4 +1,33 @@
-import { FlatList, Image, View } from 'react-native';
+// import { FlatList, Image, View } from 'react-native';
+
+// export function Carousel() {
+//   return (
+//     <View className="-mr-6">
+//       <FlatList
+//         data={slides}
+//         keyExtractor={(item) => String(item.id)}
+//         renderItem={renderItem}
+//         showsHorizontalScrollIndicator={false}
+//         snapToInterval={375}
+//         horizontal
+//         pagingEnabled
+//       />
+
+//       <View className="flex-row">
+//         {slides.map((slide) => (
+//           <View
+//             key={slide.id}
+//             className={`mx-1 ${slide.id} rounded-full ${slide.id === 1 ? 'bg-white' : 'bg-gray-subtitle'}`}
+//           />
+//         ))}
+//       </View>
+//     </View>
+//   );
+// }
+
+import * as React from 'react';
+import { Dimensions, Image, View } from 'react-native';
+import Crsl from 'react-native-reanimated-carousel';
 
 const slides = [
   { id: 1, uri: 'https://picsum.photos/500/300' },
@@ -7,36 +36,24 @@ const slides = [
   { id: 4, uri: 'https://picsum.photos/500/400' },
 ];
 
-function renderItem() {
-  return (
-    <Image
-      source={{ uri: 'https://picsum.photos/500/300' }}
-      className="mr-6 h-44 w-72 rounded-2xl"
-    />
-  );
+function renderItem({ uri }: { uri: string }) {
+  return <Image source={{ uri }} className="mr-11 h-48 rounded-2xl" resizeMode="cover" />;
 }
 
 export function Carousel() {
-  return (
-    <View className="-mr-6">
-      <FlatList
-        data={slides}
-        keyExtractor={(item) => String(item.id)}
-        renderItem={renderItem}
-        showsHorizontalScrollIndicator={false}
-        snapToInterval={375}
-        horizontal
-        pagingEnabled
-      />
+  const width = Dimensions.get('window').width;
 
-      <View className="flex-row">
-        {slides.map((slide) => (
-          <View
-            key={slide.id}
-            className={`mx-1 ${slide.id} rounded-full ${slide.id === 1 ? 'bg-white' : 'bg-gray-subtitle'}`}
-          />
-        ))}
-      </View>
+  return (
+    <View className="flex-1">
+      <Crsl
+        loop
+        width={width}
+        height={width / 2}
+        autoPlay
+        data={slides}
+        scrollAnimationDuration={3000}
+        renderItem={({ item }) => renderItem(item)}
+      />
     </View>
   );
 }
