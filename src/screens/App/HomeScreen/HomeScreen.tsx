@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { FlatList, SectionList } from 'react-native';
 
-import { Box, Carousel, CatergoryButton, Header } from '@/components';
+import { Box, Carousel, Header, Menu } from '@/components';
 import { CATEGORIES, ProductProps } from '@/mock';
 import { AppTabScreenProps } from '@/routes';
 
@@ -39,7 +39,7 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
 
       <Carousel />
 
-      <FlatList
+      {/* <FlatList
         ref={flatListRef}
         data={CATEGORIES}
         keyExtractor={(item) => item}
@@ -54,6 +54,13 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
         className="mt-5 max-h-10"
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{ gap: 12 }}
+      /> */}
+
+      <Menu
+        data={CATEGORIES}
+        flatListRef={flatListRef}
+        currentCategory={currentCategory}
+        handleCategoryChange={handleCategoryChange}
       />
     </Box>
   );

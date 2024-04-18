@@ -8,6 +8,7 @@ export * from './Form/FormTextInput';
 export * from './Header';
 export * from './Icons/CustonIcons';
 export * from './Loading';
+export * from './Menu';
 export * from './PasswordInput';
 export * from './SegmentCard';
 export * from './TextInput';
