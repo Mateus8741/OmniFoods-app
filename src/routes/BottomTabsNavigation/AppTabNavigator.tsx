@@ -3,11 +3,12 @@ import React from 'react';
 
 import { AppTabBar } from './AppTabBar';
 
-import { HomeScreen, SettingsScreen } from '@/screens';
+import { CartScreen, HomeScreen, SettingsScreen } from '@/screens';
 
 export type AppTabBottomTabParamList = {
   HomeScreen: undefined;
   SettingsScreen: undefined;
+  CartScreen: undefined;
 };
 
 function renderTabBar(props: BottomTabBarProps) {
@@ -25,6 +26,7 @@ export function AppTabNavigator() {
       tabBar={renderTabBar}>
       <Screen name="HomeScreen" component={HomeScreen} />
       <Screen name="SettingsScreen" component={SettingsScreen} />
+      <Screen name="CartScreen" component={CartScreen} />
     </Navigator>
   );
 }
