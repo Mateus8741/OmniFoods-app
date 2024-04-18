@@ -39,23 +39,6 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
 
       <Carousel />
 
-      {/* <FlatList
-        ref={flatListRef}
-        data={CATEGORIES}
-        keyExtractor={(item) => item}
-        renderItem={({ item }) => (
-          <CatergoryButton
-            title={item}
-            isSelected={item === currentCategory}
-            onPress={() => handleCategoryChange(item)}
-          />
-        )}
-        horizontal
-        className="mt-5 max-h-10"
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ gap: 12 }}
-      /> */}
-
       <Menu
         data={CATEGORIES}
         flatListRef={flatListRef}
