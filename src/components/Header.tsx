@@ -12,7 +12,7 @@ export function Header({ hasNotification, fullName }: HeaderProps) {
   }
 
   return (
-    <View className="flex-row items-center justify-between border-b-2 border-gray-light pb-6">
+    <View className="mb-12 flex-row items-center justify-between border-b-2 border-gray-light pb-6">
       <View className="flex-row items-center">
         <Image
           source={{ uri: 'https://github.com/Mateus8741.png' }}
