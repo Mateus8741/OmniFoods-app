@@ -26,4 +26,11 @@ export const mapScreenToProps: Record<
       unfocused: 'home',
     },
   },
+  SettingsScreen: {
+    label: 'Configurações',
+    icon: {
+      focused: 'settings',
+      unfocused: 'settings',
+    },
+  },
 };
