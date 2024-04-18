@@ -9,8 +9,12 @@ import {
   AppTabNavigator,
 } from './BottomTabsNavigation/AppTabNavigator';
 
+import { ProductProps } from '@/mock';
+import { ProductScreen } from '@/screens';
+
 export type AppStackParamList = {
   AppTabNavigator: NavigatorScreenParams<AppTabBottomTabParamList>;
+  ProductScreen: { product: ProductProps };
 };
 
 export function AppStack() {
@@ -24,6 +28,7 @@ export function AppStack() {
         fullScreenGestureEnabled: true,
       }}>
       <Screen name="AppTabNavigator" component={AppTabNavigator} />
+      <Screen name="ProductScreen" component={ProductScreen} />
     </Navigator>
   );
 }

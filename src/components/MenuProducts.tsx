@@ -18,9 +18,10 @@ type MenuProductsProps = {
     }[];
   }[];
   sectionListRef: React.RefObject<SectionList<ProductProps>>;
+  onProductPress: (product: ProductProps) => void;
 };
 
-export function MenuProducts({ MENU, sectionListRef }: MenuProductsProps) {
+export function MenuProducts({ MENU, sectionListRef, onProductPress }: MenuProductsProps) {
   return (
     <SectionList
       ref={sectionListRef}
@@ -28,7 +29,7 @@ export function MenuProducts({ MENU, sectionListRef }: MenuProductsProps) {
       keyExtractor={(item) => item.id}
       stickySectionHeadersEnabled={false}
       showsVerticalScrollIndicator={false}
-      renderItem={({ item }) => <Products data={item} />}
+      renderItem={({ item }) => <Products data={item} onPress={() => onProductPress(item)} />}
       renderSectionHeader={({ section: { title } }) => (
         <Text className="mb-3 mt-8 font-heading text-xl text-white">{title}</Text>
       )}

@@ -33,6 +33,10 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
     }
   }
 
+  function handleProductPress(product: ProductProps) {
+    navigation.navigate('ProductScreen', { product });
+  }
+
   return (
     <Box>
       <Header hasNotification fullName="Mateus Tavares" />
@@ -46,7 +50,11 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
         handleCategoryChange={handleCategoryChange}
       />
 
-      <MenuProducts MENU={MENU} sectionListRef={sectionListRef} />
+      <MenuProducts
+        MENU={MENU}
+        sectionListRef={sectionListRef}
+        onProductPress={(product) => handleProductPress(product)}
+      />
     </Box>
   );
 }
