@@ -1,12 +1,12 @@
 /* eslint-disable react/display-name */
 import React, { forwardRef } from 'react';
 import {
-    Image,
-    ImageProps,
-    Text,
-    TouchableOpacity,
-    TouchableOpacityProps,
-    View,
+  Image,
+  ImageProps,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
+  View,
 } from 'react-native';
 
 type ProductDataProps = {
@@ -34,7 +34,7 @@ export const Products = forwardRef<TouchableOpacity, ProductProps>(({ data, ...r
           )}
         </View>
 
-        <Text className="m5-0.5 text-xs leading-5 text-slate-400">{data.description}</Text>
+        <Text className="m5-0.5 text-xs leading-5 text-gray-subtitle">{data.description}</Text>
       </View>
     </TouchableOpacity>
   );
