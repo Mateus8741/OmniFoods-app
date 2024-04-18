@@ -9,6 +9,7 @@ export * from './Header';
 export * from './Icons/CustonIcons';
 export * from './Loading';
 export * from './Menu';
+export * from './MenuProducts';
 export * from './PasswordInput';
 export * from './Products';
 export * from './SegmentCard';

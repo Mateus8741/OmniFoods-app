@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
-import { FlatList, SectionList, Text } from 'react-native';
+import { FlatList, SectionList } from 'react-native';
 
-import { Box, Carousel, Header, Menu, Products } from '@/components';
+import { Box, Carousel, Header, Menu, MenuProducts } from '@/components';
 import { CATEGORIES, MENU, ProductProps } from '@/mock';
 import { AppTabScreenProps } from '@/routes';
 
@@ -46,19 +46,7 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
         handleCategoryChange={handleCategoryChange}
       />
 
-      <SectionList
-        ref={sectionListRef}
-        sections={MENU}
-        keyExtractor={(item) => item.id}
-        stickySectionHeadersEnabled={false}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => <Products data={item} />}
-        renderSectionHeader={({ section: { title } }) => (
-          <Text className="mb-3 mt-8 font-heading text-xl text-white">{title}</Text>
-        )}
-        className="flex-1 p-5"
-        contentContainerStyle={{ paddingBottom: 100 }}
-      />
+      <MenuProducts MENU={MENU} sectionListRef={sectionListRef} />
     </Box>
   );
 }
