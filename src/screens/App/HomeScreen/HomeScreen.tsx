@@ -1,14 +1,13 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 
+import { Box } from '@/components';
 import { AppTabScreenProps } from '@/routes';
 
 export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
   return (
-    <>
-      <View className="flex-1 flex-row flex-wrap justify-between">
-        <Text>asdas</Text>
-      </View>
-    </>
+    <Box>
+      <Text>asdas</Text>
+    </Box>
   );
 }

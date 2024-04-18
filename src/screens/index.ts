@@ -4,4 +4,5 @@ export * from './Auth/OnboardingScreen/OnboardingScreen'
 export * from './Auth/RegisterScreen/RegisterScreen'
 
 export * from './App/HomeScreen/HomeScreen'
+export * from './App/SettingsScreen/SettingsScreen'
 
