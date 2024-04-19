@@ -1,21 +1,17 @@
-/* eslint-disable prettier/prettier */
-
 import { NavigatorScreenParams } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 
-import {
-  AppTabBottomTabParamList,
-  AppTabNavigator,
-} from './BottomTabsNavigation/AppTabNavigator';
+import { AppTabBottomTabParamList, AppTabNavigator } from './BottomTabsNavigation/AppTabNavigator';
 
 import { ProductProps } from '@/mock';
-import { ProductScreen, SelectTableScreen } from '@/screens';
+import { ProductScreen, SelectTableScreen, SuccessScreen } from '@/screens';
 
 export type AppStackParamList = {
   AppTabNavigator: NavigatorScreenParams<AppTabBottomTabParamList>;
   ProductScreen: { product: ProductProps };
   SelectTableScreen: undefined;
+  SuccessScreen: undefined;
 };
 
 export function AppStack() {
@@ -30,12 +26,15 @@ export function AppStack() {
       }}>
       <Screen name="AppTabNavigator" component={AppTabNavigator} />
       <Screen name="ProductScreen" component={ProductScreen} />
-      <Screen name="SelectTableScreen" component={SelectTableScreen} 
+      <Screen
+        name="SelectTableScreen"
+        component={SelectTableScreen}
         options={{
           animation: 'slide_from_bottom',
           presentation: 'modal',
         }}
       />
+      <Screen name="SuccessScreen" component={SuccessScreen} />
     </Navigator>
   );
 }
