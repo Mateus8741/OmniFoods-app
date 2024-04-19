@@ -11,12 +11,11 @@ export function CartScreen({ navigation }: AppTabScreenProps<'CartScreen'>) {
   const { table } = useTableStorage();
 
   function handleFinishOrder() {
-    Alert.alert('Pedido finalizado', 'Seu pedido foi finalizado com sucesso', [
-      {
-        text: 'Ok',
-        onPress: () => {},
-      },
-    ]);
+    if (table) {
+      navigation.navigate('SuccessScreen');
+    } else {
+      Alert.alert('Escolha uma mesa', 'Por favor, escolha uma mesa para finalizar o pedido.');
+    }
   }
 
   function handleChooseTable() {
