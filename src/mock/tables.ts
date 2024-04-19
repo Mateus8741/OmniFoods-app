@@ -1,4 +1,9 @@
-export const tables = [
+export type TableMockProps = {
+  id: number;
+  value: string;
+};
+
+export const tables: TableMockProps[] = [
   { id: 1, value: '01' },
   { id: 2, value: '02' },
   { id: 3, value: '03' },

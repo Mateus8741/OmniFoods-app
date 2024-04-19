@@ -1,14 +1,12 @@
-import { useState } from 'react';
 import { Text, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox/build/dist/BouncyCheckbox';
 
+import { useTableStorage } from '@/contexts';
 import { tables } from '@/mock';
 import { colors } from '@/theme/colors';
 
 export function SelectTableScreen() {
-  const [selectedTable, setSelectedTable] = useState<any>();
-
-  console.log(selectedTable);
+  const { table, setTable } = useTableStorage();
 
   return (
     <View className="flex-1 items-center bg-bg px-5 pt-7">
@@ -22,9 +20,7 @@ export function SelectTableScreen() {
               size={30}
               unFillColor="transparent"
               fillColor={
-                selectedTable && selectedTable.id === item.id
-                  ? colors.green.success
-                  : colors.gray.subtitle
+                table && table.id === item.id ? colors.green.success : colors.gray.subtitle
               }
               textStyle={{
                 color: 'white',
@@ -33,8 +29,8 @@ export function SelectTableScreen() {
                 marginLeft: -10,
                 direction: 'ltr',
               }}
-              isChecked={selectedTable === item}
-              onPress={() => setSelectedTable(item)}
+              isChecked={table === item}
+              onPress={() => setTable(item)}
             />
           </View>
         ))}
