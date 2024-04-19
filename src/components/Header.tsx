@@ -4,9 +4,10 @@ import { Image, Pressable, Text, View } from 'react-native';
 type HeaderProps = {
   fullName: string;
   hasNotification?: boolean;
+  urlImage: string;
 };
 
-export function Header({ hasNotification, fullName }: HeaderProps) {
+export function Header({ hasNotification, fullName, urlImage }: HeaderProps) {
   function handleNotification() {
     console.log('Notification');
   }
@@ -14,14 +15,10 @@ export function Header({ hasNotification, fullName }: HeaderProps) {
   return (
     <View className="mb-12 flex-row items-center justify-between border-b-2 border-gray-light pb-6">
       <View className="flex-row items-center">
-        <Image
-          source={{ uri: 'https://github.com/Mateus8741.png' }}
-          className="h-12 w-12 rounded-full"
-          resizeMode="cover"
-        />
+        <Image source={{ uri: urlImage }} className="h-12 w-12 rounded-full" resizeMode="cover" />
 
         <View className="ml-6 gap-y-1">
-          <Text className="font-bold text-sm text-gray-subtitle">Entrega para</Text>
+          <Text className="font-bold text-sm text-gray-subtitle">Funcionário</Text>
 
           <View className="flex-row">
             <Text className="font-bold text-base text-white">{fullName}</Text>
