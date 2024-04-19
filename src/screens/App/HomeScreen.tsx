@@ -9,6 +9,8 @@ import { AppTabScreenProps } from '@/routes';
 export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
   const [currentCategory, setCurrentCategory] = useState(CATEGORIES[0]);
 
+  const [search, setSearch] = useState('');
+
   const flatListRef = useRef<FlatList<string>>(null);
 
   const sectionListRef = useRef<SectionList<ProductProps>>(null);
@@ -38,6 +40,10 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
     navigation.navigate('ProductScreen', { product });
   }
 
+  const filteredProducts = MENU.filter((product) =>
+    product.data.some((item) => item.title.toLowerCase().includes(search.toLowerCase()))
+  );
+
   return (
     <Box>
       <Header
@@ -48,7 +54,7 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
 
       <TextInput
         placeholder="Buscar produtos"
-        onChangeText={(text) => console.log(text)}
+        onChangeText={(text) => setSearch(text)}
         rightComponent={<MaterialCommunityIcons name="magnify" size={20} color="white" />}
       />
 
@@ -60,7 +66,7 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
       />
 
       <MenuProducts
-        MENU={MENU}
+        MENU={filteredProducts}
         sectionListRef={sectionListRef}
         onProductPress={(product) => handleProductPress(product)}
       />
