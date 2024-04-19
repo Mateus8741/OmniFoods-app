@@ -1,5 +1,4 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Image, Pressable, Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 
 type HeaderProps = {
   fullName: string;
@@ -26,13 +25,13 @@ export function Header({ hasNotification, fullName, urlImage }: HeaderProps) {
         </View>
       </View>
 
-      <Pressable onPress={handleNotification} className="relative">
+      {/* <Pressable onPress={handleNotification} className="relative">
         <MaterialCommunityIcons name="bell" size={24} color="white" />
 
         {hasNotification && (
           <View className="absolute right-0 top-0 h-3 w-3 rounded-full bg-red-500" />
         )}
-      </Pressable>
+      </Pressable> */}
     </View>
   );
 }
