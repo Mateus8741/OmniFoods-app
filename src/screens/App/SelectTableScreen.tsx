@@ -1,18 +1,32 @@
+import { useState } from 'react';
 import { Text, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox/build/dist/BouncyCheckbox';
 
+import { Box, CustomButton } from '@/components';
 import { useTableStorage } from '@/contexts';
-import { tables } from '@/mock';
+import { TableMockProps, tables } from '@/mock';
+import { AppScreenProps } from '@/routes';
 import { colors } from '@/theme/colors';
 
-export function SelectTableScreen() {
+export function SelectTableScreen({ navigation }: AppScreenProps<'SelectTableScreen'>) {
+  const [selectedTable, setSelectedTable] = useState<TableMockProps>({} as TableMockProps);
+
   const { table, setTable } = useTableStorage();
 
+  function handleConfirmTable() {
+    if (table) {
+      navigation.goBack();
+      setTable(selectedTable);
+    }
+
+    navigation.goBack();
+  }
+
   return (
-    <View className="flex-1 items-center bg-bg px-5 pt-7">
+    <Box>
       <Text className="mb-8 text-center text-3xl text-white">Selecione a mesa</Text>
 
-      <View className="flex-row flex-wrap justify-center">
+      <View className="flex-1 flex-row flex-wrap justify-center">
         {tables.map((item) => (
           <View key={item.id} className="h-20 w-20 items-center justify-center p-3">
             <BouncyCheckbox
@@ -20,7 +34,9 @@ export function SelectTableScreen() {
               size={30}
               unFillColor="transparent"
               fillColor={
-                table && table.id === item.id ? colors.green.success : colors.gray.subtitle
+                selectedTable && selectedTable.id === item.id
+                  ? colors.green.success
+                  : colors.gray.subtitle
               }
               textStyle={{
                 color: 'white',
@@ -29,12 +45,14 @@ export function SelectTableScreen() {
                 marginLeft: -10,
                 direction: 'ltr',
               }}
-              isChecked={table === item}
-              onPress={() => setTable(item)}
+              isChecked={selectedTable === item}
+              onPress={() => setSelectedTable(item)}
             />
           </View>
         ))}
       </View>
-    </View>
+
+      <CustomButton title="Confirmar" onPress={handleConfirmTable} />
+    </Box>
   );
 }
