@@ -5,13 +5,12 @@ import React from 'react';
 import { AppTabBottomTabParamList, AppTabNavigator } from './BottomTabsNavigation/AppTabNavigator';
 
 import { ProductProps } from '@/mock';
-import { ProductScreen, SelectTableScreen, SuccessScreen } from '@/screens';
+import { ProductScreen, SelectTableScreen } from '@/screens';
 
 export type AppStackParamList = {
   AppTabNavigator: NavigatorScreenParams<AppTabBottomTabParamList>;
   ProductScreen: { product: ProductProps };
   SelectTableScreen: undefined;
-  SuccessScreen: undefined;
 };
 
 export function AppStack() {
@@ -34,7 +33,6 @@ export function AppStack() {
           presentation: 'modal',
         }}
       />
-      <Screen name="SuccessScreen" component={SuccessScreen} />
     </Navigator>
   );
 }

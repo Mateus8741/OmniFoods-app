@@ -8,5 +8,4 @@ export * from './App/HomeScreen'
 export * from './App/ProductScreen'
 export * from './App/SelectTableScreen'
 export * from './App/SettingsScreen'
-export * from './App/SuccessScreen'
 

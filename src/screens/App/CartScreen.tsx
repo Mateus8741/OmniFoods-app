@@ -12,7 +12,7 @@ export function CartScreen({ navigation }: AppTabScreenProps<'CartScreen'>) {
 
   function handleFinishOrder() {
     if (table) {
-      navigation.navigate('SuccessScreen');
+      Alert.alert('Pedido finalizado', 'Seu pedido foi finalizado com sucesso.');
     } else {
       Alert.alert('Escolha uma mesa', 'Por favor, escolha uma mesa para finalizar o pedido.');
     }
