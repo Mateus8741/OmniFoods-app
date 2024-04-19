@@ -1,4 +1,4 @@
-import { Alert, ScrollView, Text, View } from 'react-native';
+import { Alert, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 import { Box, CartProducts, CustomButton } from '@/components';
 import { useCarStore } from '@/contexts';
@@ -15,6 +15,10 @@ export function CartScreen() {
         onPress: () => {},
       },
     ]);
+  }
+
+  function handleChooseTable() {
+    console.log('Choose table');
   }
 
   function handleRemoveProduct(product: ProductProps) {
@@ -54,11 +58,14 @@ export function CartScreen() {
           <Text className="font-body my-8 text-center text-slate-400">Seu carrinho está vazio</Text>
         )}
 
-        <View className="mb-3 flex-row items-center justify-between gap-x-3 border-b border-gray-subtitle pb-5">
+        <TouchableOpacity
+          className="mb-3 flex-row items-center justify-between gap-x-3 border-b border-gray-subtitle pb-5"
+          activeOpacity={0.7}
+          onPress={handleChooseTable}>
           <Text className="font-heading text-lg text-white">Mesa</Text>
 
           <Text className="font-bold text-lg text-white">02</Text>
-        </View>
+        </TouchableOpacity>
 
         <View className="flex-row items-center justify-between">
           <Text className="font-heading text-lg text-white">Total</Text>
