@@ -4,22 +4,20 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox/build/dist/BouncyCheckb
 
 import { Box, CustomButton } from '@/components';
 import { useTableStorage } from '@/contexts';
-import { TableMockProps, tables } from '@/mock';
+import { tables } from '@/mock';
 import { AppScreenProps } from '@/routes';
 import { colors } from '@/theme/colors';
 
 export function SelectTableScreen({ navigation }: AppScreenProps<'SelectTableScreen'>) {
-  const [selectedTable, setSelectedTable] = useState<TableMockProps>({} as TableMockProps);
+  const [selectedTable, setSelectedTable] = useState<any>();
 
-  const { table, setTable } = useTableStorage();
+  const { setTable } = useTableStorage();
 
   function handleConfirmTable() {
-    if (table) {
+    if (selectedTable) {
       navigation.goBack();
       setTable(selectedTable);
     }
-
-    navigation.goBack();
   }
 
   return (
