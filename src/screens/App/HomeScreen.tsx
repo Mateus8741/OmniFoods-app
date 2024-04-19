@@ -1,6 +1,6 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { useRef, useState } from 'react';
-import { FlatList, SectionList } from 'react-native';
+import { FlatList, Keyboard, SectionList } from 'react-native';
 
 import { Box, Header, Menu, MenuProducts, TextInput } from '@/components';
 import { CATEGORIES, MENU, ProductProps } from '@/mock';
@@ -40,6 +40,11 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
     navigation.navigate('ProductScreen', { product });
   }
 
+  function handleClearSearch() {
+    setSearch('');
+    Keyboard.dismiss();
+  }
+
   const filteredProducts = MENU.filter((product) =>
     product.data.some((item) => item.title.toLowerCase().includes(search.toLowerCase()))
   );
@@ -54,8 +59,16 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
 
       <TextInput
         placeholder="Buscar produtos"
-        onChangeText={(text) => setSearch(text)}
-        rightComponent={<MaterialCommunityIcons name="magnify" size={20} color="white" />}
+        onChangeText={(text: React.SetStateAction<string>) => setSearch(text)}
+        value={search}
+        rightComponent={
+          <MaterialCommunityIcons
+            name={search ? 'close' : 'magnify'}
+            size={20}
+            color="white"
+            onPress={search ? handleClearSearch : () => null}
+          />
+        }
       />
 
       <Menu
