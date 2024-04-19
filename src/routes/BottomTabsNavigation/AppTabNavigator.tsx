@@ -25,8 +25,8 @@ export function AppTabNavigator() {
       }}
       tabBar={renderTabBar}>
       <Screen name="HomeScreen" component={HomeScreen} />
-      <Screen name="SettingsScreen" component={SettingsScreen} />
       <Screen name="CartScreen" component={CartScreen} />
+      <Screen name="SettingsScreen" component={SettingsScreen} />
     </Navigator>
   );
 }

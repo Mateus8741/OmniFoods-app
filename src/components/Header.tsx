@@ -13,7 +13,7 @@ export function Header({ hasNotification, fullName, urlImage }: HeaderProps) {
   }
 
   return (
-    <View className="mb-12 flex-row items-center justify-between border-b-2 border-gray-light pb-6">
+    <View className="mb-8 flex-row items-center justify-between border-b-2 border-gray-light pb-6">
       <View className="flex-row items-center">
         <Image source={{ uri: urlImage }} className="h-12 w-12 rounded-full" resizeMode="cover" />
 

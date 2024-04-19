@@ -1,7 +1,8 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { useRef, useState } from 'react';
 import { FlatList, SectionList } from 'react-native';
 
-import { Box, Carousel, Header, Menu, MenuProducts } from '@/components';
+import { Box, Header, Menu, MenuProducts, TextInput } from '@/components';
 import { CATEGORIES, MENU, ProductProps } from '@/mock';
 import { AppTabScreenProps } from '@/routes';
 
@@ -45,7 +46,11 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
         urlImage="https://github.com/Mateus8741.png"
       />
 
-      <Carousel />
+      <TextInput
+        placeholder="Buscar produtos"
+        onChangeText={(text) => console.log(text)}
+        rightComponent={<MaterialCommunityIcons name="magnify" size={20} color="white" />}
+      />
 
       <Menu
         data={CATEGORIES}
