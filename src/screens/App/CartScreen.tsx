@@ -1,5 +1,4 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Alert, Text, View } from 'react-native';
+import { Alert, ScrollView, Text, View } from 'react-native';
 
 import { Box, CartProducts, CustomButton } from '@/components';
 import { useCarStore } from '@/contexts';
@@ -40,29 +39,29 @@ export function CartScreen() {
         <Text className="text-md mb-3 font-bold text-white">Resumo do pedido</Text>
 
         {products.length > 0 ? (
-          <View className="mb-5 border-b border-gray-subtitle">
-            {products.map((product) => (
-              <CartProducts
-                key={product.id}
-                data={product}
-                onPress={() => handleRemoveProduct(product)}
-              />
-            ))}
+          <View className="max-h-96">
+            <ScrollView className="mb-5" showsVerticalScrollIndicator={false}>
+              {products.map((product) => (
+                <CartProducts
+                  key={product.id}
+                  data={product}
+                  onPress={() => handleRemoveProduct(product)}
+                />
+              ))}
+            </ScrollView>
           </View>
         ) : (
           <Text className="font-body my-8 text-center text-slate-400">Seu carrinho está vazio</Text>
         )}
 
-        <View className="mb-3 flex-row items-center gap-x-3 border-b border-gray-subtitle pb-5">
-          <View className="h-8 w-8 items-center justify-center rounded-full bg-gray-subtitle/35">
-            <MaterialCommunityIcons name="map-marker" size={20} color="white" />
-          </View>
+        <View className="mb-3 flex-row items-center justify-between gap-x-3 border-b border-gray-subtitle pb-5">
+          <Text className="font-heading text-lg text-white">Mesa</Text>
 
-          <Text className="font-bold text-lg text-white">Rua, número e bairro</Text>
+          <Text className="font-bold text-lg text-white">02</Text>
         </View>
 
         <View className="flex-row items-center justify-between">
-          <Text className="font-bold text-lg text-white">Total</Text>
+          <Text className="font-heading text-lg text-white">Total</Text>
           <Text className="font-bold text-base text-white">
             {FormatCurrency(products.reduce((acc, product) => acc + product.price, 0))}
           </Text>
@@ -80,7 +79,7 @@ export function CartScreen() {
         </View>
 
         <View className="flex-row justify-between">
-          <Text className="text-lg text-white">Entrega</Text>
+          <Text className="text-lg text-white">Garçon</Text>
           <Text className="font-bold text-lg text-white">R$ 5.00</Text>
         </View>
 
@@ -94,7 +93,7 @@ export function CartScreen() {
         </View>
       </View>
 
-      <View className="mb-12 flex-1 justify-end px-7 pb-8">
+      <View className="mb-10 flex-1 justify-end px-7 pb-8">
         <CustomButton title="Finalizar pedido" onPress={handleFinishOrder} />
       </View>
     </Box>
