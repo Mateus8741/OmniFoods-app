@@ -33,11 +33,4 @@ export const mapScreenToProps: Record<
       unfocused: 'shopping-cart',
     },
   },
-  SettingsScreen: {
-    label: 'Configurações',
-    icon: {
-      focused: 'settings',
-      unfocused: 'settings',
-    },
-  },
 };
