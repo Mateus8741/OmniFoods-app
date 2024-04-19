@@ -3,9 +3,10 @@ import { Alert, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { Box, CartProducts, CustomButton } from '@/components';
 import { useCarStore } from '@/contexts';
 import { ProductProps } from '@/mock';
+import { AppTabScreenProps } from '@/routes';
 import { FormatCurrency } from '@/utils';
 
-export function CartScreen() {
+export function CartScreen({ navigation }: AppTabScreenProps<'CartScreen'>) {
   const { products, removeProduct } = useCarStore();
 
   function handleFinishOrder() {
@@ -19,6 +20,7 @@ export function CartScreen() {
 
   function handleChooseTable() {
     console.log('Choose table');
+    navigation.navigate('SelectTableScreen');
   }
 
   function handleRemoveProduct(product: ProductProps) {

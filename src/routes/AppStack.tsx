@@ -10,11 +10,12 @@ import {
 } from './BottomTabsNavigation/AppTabNavigator';
 
 import { ProductProps } from '@/mock';
-import { ProductScreen } from '@/screens';
+import { ProductScreen, SelectTableScreen } from '@/screens';
 
 export type AppStackParamList = {
   AppTabNavigator: NavigatorScreenParams<AppTabBottomTabParamList>;
   ProductScreen: { product: ProductProps };
+  SelectTableScreen: undefined;
 };
 
 export function AppStack() {
@@ -29,6 +30,12 @@ export function AppStack() {
       }}>
       <Screen name="AppTabNavigator" component={AppTabNavigator} />
       <Screen name="ProductScreen" component={ProductScreen} />
+      <Screen name="SelectTableScreen" component={SelectTableScreen} 
+        options={{
+          animation: 'slide_from_bottom',
+          presentation: 'modal',
+        }}
+      />
     </Navigator>
   );
 }

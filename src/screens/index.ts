@@ -6,5 +6,6 @@ export * from './Auth/RegisterScreen'
 export * from './App/CartScreen'
 export * from './App/HomeScreen'
 export * from './App/ProductScreen'
+export * from './App/SelectTableScreen'
 export * from './App/SettingsScreen'
 
