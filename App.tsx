@@ -5,6 +5,7 @@ import {
   useFonts,
 } from '@expo-google-fonts/roboto';
 import { StatusBar } from 'react-native';
+import Toast from 'react-native-toast-message';
 
 import { Loading } from '@/components';
 import { Routes } from '@/routes';
@@ -23,6 +24,7 @@ export default function App() {
     <>
       <StatusBar barStyle="light-content" />
       {fontsLoaded ? <Routes /> : <Loading />}
+      <Toast />
     </>
   );
 }

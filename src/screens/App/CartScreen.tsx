@@ -1,18 +1,30 @@
 import { Alert, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import Toast from 'react-native-toast-message';
 
 import { Box, CartProducts, CustomButton } from '@/components';
 import { useCarStore, useTableStorage } from '@/contexts';
+import { useAppSafeArea } from '@/hooks';
 import { ProductProps } from '@/mock';
 import { AppTabScreenProps } from '@/routes';
 import { FormatCurrency } from '@/utils';
 
 export function CartScreen({ navigation }: AppTabScreenProps<'CartScreen'>) {
-  const { products, removeProduct } = useCarStore();
-  const { table } = useTableStorage();
+  const { products, removeProduct, clearCart } = useCarStore();
+  const { table, clearTable } = useTableStorage();
+  const { top } = useAppSafeArea();
 
   function handleFinishOrder() {
     if (table) {
-      Alert.alert('Pedido finalizado', 'Seu pedido foi finalizado com sucesso.');
+      Toast.show({
+        type: 'success',
+        text1: 'Pronto',
+        text2: 'Pedido feito com sucesso!',
+        topOffset: top,
+      });
+
+      clearCart();
+      clearTable();
+      navigation.navigate('HomeScreen');
     } else {
       Alert.alert('Escolha uma mesa', 'Por favor, escolha uma mesa para finalizar o pedido.');
     }
