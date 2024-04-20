@@ -24,13 +24,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.OmniFoods"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#151518"
-      }
+      },
+      "package": "com.OmniFoods"
     },
     "extra": {
       "eas": {
