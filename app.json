@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "no-name-project",
-    "slug": "no-name-project",
+    "name": "OmniFoods",
+    "slug": "OmniFoods",
     "version": "1.0.0",
     "web": {
       "favicon": "./assets/favicon.png"
