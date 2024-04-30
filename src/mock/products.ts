@@ -125,10 +125,10 @@ const MENU = [
   },
 ];
 
-const PRODUCTS = MENU.map((item) => item.data).flat();
+// const PRODUCTS = MENU.map((item) => item.data).flat();
 
-const CATEGORIES = MENU.map((item) => item.title);
+// const CATEGORIES = MENU.map((item) => item.title);
 
-type ProductProps = (typeof PRODUCTS)[0];
+// type ProductProps = (typeof PRODUCTS)[0];
 
-export { CATEGORIES, MENU, PRODUCTS, ProductProps };
+// export { CATEGORIES, MENU, PRODUCTS, ProductProps };

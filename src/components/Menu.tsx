@@ -6,7 +6,7 @@ type MenuProps = {
   currentCategory: string;
   handleCategoryChange: (category: string) => void;
   flatListRef: React.RefObject<FlatList<string>>;
-  data: string[];
+  data: string[] | undefined;
 };
 
 export function Menu({ currentCategory, data, handleCategoryChange, flatListRef }: MenuProps) {
