@@ -30,11 +30,15 @@ export function ProductScreen({ route, navigation }: AppScreenProps<'ProductScre
           <MaterialCommunityIcons name="chevron-left" size={24} color="white" />
         </Pressable>
 
-        <Image source={product.cover} className="h-52 w-full rounded-md" resizeMode="cover" />
+        <Image
+          source={{ uri: product.cover }}
+          className="h-52 w-full rounded-md"
+          resizeMode="cover"
+        />
       </View>
 
       <View className="mt-8 flex-1">
-        <Text className="font-heading text-xl text-white">{product.title}</Text>
+        <Text className="font-heading text-xl text-white">{product.name}</Text>
 
         <Text className="my-2 font-heading text-2xl text-lime-400">
           {FormatCurrency(product.price)}
@@ -44,12 +48,17 @@ export function ProductScreen({ route, navigation }: AppScreenProps<'ProductScre
           {product.description}
         </Text>
 
-        {product.ingredients.map((ingredient) => (
+        {/* {product.ingredients.map((ingredient) => (
           <Text key={ingredient} className="font-body text-base leading-6 text-gray-300">
             {'\u2022'}
             {ingredient}
           </Text>
-        ))}
+        ))} */}
+
+        <Text className="font-body text-base leading-6 text-gray-300">
+          {'\u2022'}
+          {product.ingredients}
+        </Text>
       </View>
 
       <View className="p-5 pb-8">

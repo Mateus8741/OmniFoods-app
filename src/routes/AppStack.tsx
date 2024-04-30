@@ -4,12 +4,12 @@ import React from 'react';
 
 import { AppTabBottomTabParamList, AppTabNavigator } from './BottomTabsNavigation/AppTabNavigator';
 
-import { Product } from '@/models/ProductModel';
+import { Detail } from '@/models/ProductModel';
 import { ProductScreen, SelectTableScreen } from '@/screens';
 
 export type AppStackParamList = {
   AppTabNavigator: NavigatorScreenParams<AppTabBottomTabParamList>;
-  ProductScreen: { product: Product };
+  ProductScreen: { product: Detail };
   SelectTableScreen: undefined;
 };
 

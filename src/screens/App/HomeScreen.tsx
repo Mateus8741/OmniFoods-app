@@ -5,7 +5,7 @@ import { FlatList, Keyboard, SectionList } from 'react-native';
 import { useGetAllProducts } from '@/api/useCases/useGetAllProducts';
 import { Box, Header, Menu, MenuProducts, TextInput } from '@/components';
 // import { CATEGORIES, MENU, ProductProps } from '@/mock';
-import { Product } from '@/models/ProductModel';
+import { Detail, Product } from '@/models/ProductModel';
 import { AppTabScreenProps } from '@/routes';
 
 export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
@@ -46,7 +46,7 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
     }
   }
 
-  function handleProductPress(product: Product) {
+  function handleProductPress(product: Detail) {
     navigation.navigate('ProductScreen', { product });
   }
 
@@ -97,7 +97,7 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
           })),
         }))}
         sectionListRef={sectionListRef}
-        onProductPress={(product) => handleProductPress(product)}
+        onProductPress={(detail) => handleProductPress(detail)}
       />
     </Box>
   );

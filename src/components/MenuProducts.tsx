@@ -2,7 +2,7 @@ import { SectionList, Text } from 'react-native';
 
 import { Products } from './Products';
 
-import { Product } from '@/models/ProductModel';
+import { Detail } from '@/models/ProductModel';
 
 type MenuProductsProps = {
   MENU: {
@@ -18,7 +18,7 @@ type MenuProductsProps = {
     }[];
   }[];
   sectionListRef: React.RefObject<SectionList<any>>;
-  onProductPress: (product: Product) => void;
+  onProductPress: (product: Detail) => void;
 };
 
 export function MenuProducts({ MENU, sectionListRef, onProductPress }: MenuProductsProps) {

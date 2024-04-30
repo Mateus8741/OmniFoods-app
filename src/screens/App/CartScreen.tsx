@@ -4,7 +4,8 @@ import Toast from 'react-native-toast-message';
 import { Box, CartProducts, CustomButton } from '@/components';
 import { useCarStore, useTableStorage } from '@/contexts';
 import { useAppSafeArea } from '@/hooks';
-import { ProductProps } from '@/mock';
+// import { ProductProps } from '@/mock';
+import { Product } from '@/models/ProductModel';
 import { AppTabScreenProps } from '@/routes';
 import { FormatCurrency } from '@/utils';
 
@@ -34,7 +35,7 @@ export function CartScreen({ navigation }: AppTabScreenProps<'CartScreen'>) {
     navigation.navigate('SelectTableScreen');
   }
 
-  function handleRemoveProduct(product: ProductProps) {
+  function handleRemoveProduct(product: Product) {
     Alert.alert('Remover produto', `Deseja remover ${product.title} do carrinho?`, [
       {
         text: 'Cancelar',
