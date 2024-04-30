@@ -56,8 +56,11 @@ export function ProductScreen({ route, navigation }: AppScreenProps<'ProductScre
         ))} */}
 
         <Text className="font-body text-base leading-6 text-gray-300">
-          {'\u2022'}
-          {product.ingredients}
+          {'\u2022'}{' '}
+          {product.ingredients
+            .split(',')
+            .map((ingredient) => ingredient.trim())
+            .join('\n\u2022 ')}
         </Text>
       </View>
 
