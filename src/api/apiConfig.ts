@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 
+import { Order } from '@/models/OrderModel';
 import { Product } from '@/models/ProductModel';
 
 const api = axios.create({
@@ -8,6 +9,10 @@ const api = axios.create({
 
 type ProductListResponse = AxiosResponse<Product[]>;
 
-export function getProductList(): Promise<ProductListResponse> {
-  return api.get('/product');
+export function getProductList(path: string): Promise<ProductListResponse> {
+  return api.get(path);
+}
+
+export function createOrder(order: Order, path: string): Promise<AxiosResponse<Order>> {
+  return api.post(path, order);
 }
