@@ -1,10 +1,11 @@
 import { Alert, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import Toast from 'react-native-toast-message';
 
+import { useCreateOrder } from '@/api/useCases/useCreateOrder';
 import { Box, CartProducts, CustomButton } from '@/components';
 import { useCarStore, useTableStorage } from '@/contexts';
 import { useAppSafeArea } from '@/hooks';
-// import { ProductProps } from '@/mock';
+import { Order } from '@/models/OrderModel';
 import { Product } from '@/models/ProductModel';
 import { AppTabScreenProps } from '@/routes';
 import { FormatCurrency } from '@/utils';
@@ -14,18 +15,33 @@ export function CartScreen({ navigation }: AppTabScreenProps<'CartScreen'>) {
   const { table, clearTable } = useTableStorage();
   const { top } = useAppSafeArea();
 
+  const { mutate } = useCreateOrder(() => {
+    Toast.show({
+      type: 'success',
+      text1: 'Pronto',
+      text2: 'Pedido feito com sucesso!',
+      topOffset: top,
+    });
+
+    clearCart();
+    clearTable();
+    navigation.navigate('HomeScreen');
+  });
+
   function handleFinishOrder() {
     if (table) {
-      Toast.show({
-        type: 'success',
-        text1: 'Pronto',
-        text2: 'Pedido feito com sucesso!',
-        topOffset: top,
-      });
+      const order: Order = {
+        productOrders: products.map((product) => ({
+          productName: product.title,
+          productPrice: product.price,
+          quantity: product.quantity,
+        })),
 
-      clearCart();
-      clearTable();
-      navigation.navigate('HomeScreen');
+        tableNumber: Number(table.value),
+        changeToOrder: '',
+      };
+
+      mutate(order);
     } else {
       Alert.alert('Escolha uma mesa', 'Por favor, escolha uma mesa para finalizar o pedido.');
     }

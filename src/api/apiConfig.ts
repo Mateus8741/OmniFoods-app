@@ -13,6 +13,6 @@ export function getProductList(path: string): Promise<ProductListResponse> {
   return api.get(path);
 }
 
-export function createOrder(order: Order, path: string): Promise<AxiosResponse<Order>> {
+export function createOrder(path: string, order: Order) {
   return api.post(path, order);
 }
