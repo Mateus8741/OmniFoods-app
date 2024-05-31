@@ -4,7 +4,6 @@ import { FlatList, Keyboard, SectionList } from 'react-native';
 
 import { useGetAllProducts } from '@/api/useCases/useGetAllProducts';
 import { Box, Header, Menu, MenuProducts, TextInput } from '@/components';
-// import { CATEGORIES, MENU, ProductProps } from '@/mock';
 import { Detail, Product } from '@/models/ProductModel';
 import { AppTabScreenProps } from '@/routes';
 
@@ -81,19 +80,21 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
         }
       />
 
-      <Menu
-        data={CATEGORIES}
-        flatListRef={flatListRef}
-        currentCategory={currentCategory as string} // Fix: Add 'as string' to cast 'currentCategory' as string
-        handleCategoryChange={handleCategoryChange}
-      />
+      {search ? null : (
+        <Menu
+          data={CATEGORIES}
+          flatListRef={flatListRef}
+          currentCategory={currentCategory as string}
+          handleCategoryChange={handleCategoryChange}
+        />
+      )}
 
       <MenuProducts
         MENU={filteredProducts.map((product) => ({
           title: product.title,
           data: product.data.map((item) => ({
             ...item,
-            title: item.name, // Assuming 'name' is the property that should be used as the title
+            title: item.name,
           })),
         }))}
         sectionListRef={sectionListRef}
