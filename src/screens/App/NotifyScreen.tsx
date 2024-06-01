@@ -1,17 +1,24 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FlatList, Pressable, Text, View } from 'react-native';
 
+import { useNotify } from '@/api/useCases/useNotify';
 import { Box, NofityCard } from '@/components';
+import { Order } from '@/models/OrderModel';
 import { AppScreenProps } from '@/routes';
+import { FormatDate } from '@/utils/formatDate';
 
 export function NotifyScreen({ navigation }: AppScreenProps<'NotifyScreen'>) {
+  const { data } = useNotify();
+
   function handleBack() {
     navigation.goBack();
   }
 
-  function renderItem() {
-    return <NofityCard table="1" time="Há 3 minutos" />;
+  function renderItem({ updatedAt, tableNumber }: Order) {
+    return <NofityCard tableNumber={tableNumber} time={FormatDate(updatedAt as string)} />;
   }
+
+  const ordersCompleted = data?.data.filter((order) => order.status === 'COMPLETED');
 
   return (
     <Box>
@@ -30,9 +37,9 @@ export function NotifyScreen({ navigation }: AppScreenProps<'NotifyScreen'>) {
       </View>
 
       <FlatList
-        data={[1, 2, 3]}
-        keyExtractor={(item) => String(item)}
-        renderItem={() => renderItem()}
+        data={ordersCompleted}
+        keyExtractor={(item) => String(item.id)}
+        renderItem={({ item }) => renderItem(item)}
       />
     </Box>
   );

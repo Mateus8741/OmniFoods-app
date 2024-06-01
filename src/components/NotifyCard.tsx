@@ -2,11 +2,11 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Text, View } from 'react-native';
 
 interface NotifyCardProps {
-  table: string;
+  tableNumber: number;
   time: string;
 }
 
-export function NofityCard({ table, time }: NotifyCardProps) {
+export function NofityCard({ tableNumber, time }: NotifyCardProps) {
   return (
     <View className="mb-4 flex-row items-center justify-start">
       <View className="w-full flex-row items-center justify-start gap-x-4 rounded-lg border-2 border-green-500 p-4">
@@ -15,7 +15,7 @@ export function NofityCard({ table, time }: NotifyCardProps) {
         </View>
 
         <View className="flex-1 flex-row items-center justify-between">
-          <Text className="font-bold text-xl text-white">Pedido mesa {table} pronto</Text>
+          <Text className="font-bold text-xl text-white">Pedido mesa {tableNumber} pronto</Text>
 
           <Text className="font-bold text-sm text-white">{time}</Text>
         </View>

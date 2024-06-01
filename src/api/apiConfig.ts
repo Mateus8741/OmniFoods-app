@@ -16,3 +16,7 @@ export function getProductList(path: string): Promise<ProductListResponse> {
 export function createOrder(path: string, order: Order) {
   return api.post(path, order);
 }
+
+export function getOrders() {
+  return api.get<Order[]>('/list-all-orders');
+}
