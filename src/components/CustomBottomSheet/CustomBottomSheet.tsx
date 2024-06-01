@@ -1,8 +1,10 @@
 import BottomSheet, { BottomSheetBackdropProps } from '@gorhom/bottom-sheet';
 import React, { ReactNode, createRef, useImperativeHandle, useMemo } from 'react';
-import { View } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 
 import { CustomBackdrop } from './CustomBackDrop';
+
+import { colors } from '@/theme/colors';
 
 export type MyBottonShetHandle = {
   handleParentCloseBottonShet: () => void;
@@ -13,10 +15,11 @@ interface MyBottonShetProps {
   children: ReactNode;
   height: number;
   hasImageOnTop?: boolean;
+  scrollable?: boolean;
 }
 
 export const CustomBottomSheet = React.forwardRef<MyBottonShetHandle, MyBottonShetProps>(
-  ({ children, height, hasImageOnTop = false }, ref) => {
+  ({ children, height, hasImageOnTop = false, scrollable }, ref) => {
     const snapPoints = useMemo(() => [0.01, height], [height]);
 
     const bottomSheetRef = createRef<BottomSheet>();
@@ -40,6 +43,8 @@ export const CustomBottomSheet = React.forwardRef<MyBottonShetHandle, MyBottonSh
       <CustomBackdrop onPress={() => handleCloseBottonShet()} {...props} />
     );
 
+    const Container = scrollable ? ScrollView : View;
+
     return (
       <BottomSheet
         index={0}
@@ -54,17 +59,20 @@ export const CustomBottomSheet = React.forwardRef<MyBottonShetHandle, MyBottonSh
           overflow: 'hidden',
         }}
         handleIndicatorStyle={{
-          backgroundColor: 'gray',
+          backgroundColor: 'white',
           width: 81,
           height: 9,
         }}
+        backgroundStyle={{
+          backgroundColor: colors.gray[1000],
+        }}
         handleStyle={hasImageOnTop ? { position: 'absolute', right: 0, left: 0 } : null}>
-        <View
-        // showsVerticalScrollIndicator={false}
-        // bounces={false}
-        >
-          {children}
-        </View>
+        <KeyboardAvoidingView
+          style={{ flex: 1 }}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          className="h-full w-full p-5">
+          <Container bounces={false}>{children}</Container>
+        </KeyboardAvoidingView>
       </BottomSheet>
     );
   }

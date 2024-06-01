@@ -12,7 +12,7 @@ import { Loading } from '@/components';
 import { Routes } from '@/routes';
 import './global.css';
 
-import 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const queryClient = new QueryClient();
 
@@ -27,8 +27,10 @@ export default function App() {
     <>
       <StatusBar barStyle="light-content" />
       <QueryClientProvider client={queryClient}>
-        {fontsLoaded ? <Routes /> : <Loading />}
-        <Toast />
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          {fontsLoaded ? <Routes /> : <Loading />}
+          <Toast />
+        </GestureHandlerRootView>
       </QueryClientProvider>
     </>
   );
