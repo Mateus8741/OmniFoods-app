@@ -61,7 +61,7 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
 
   return (
     <Box>
-      <Header fullName="Mateus Tavares" urlImage="https://github.com/Mateus8741.png" />
+      <Header />
 
       <TextInput
         placeholder="Buscar produtos"
