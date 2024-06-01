@@ -5,12 +5,13 @@ import React from 'react';
 import { AppTabBottomTabParamList, AppTabNavigator } from './BottomTabsNavigation/AppTabNavigator';
 
 import { Detail } from '@/models/ProductModel';
-import { ProductScreen, SelectTableScreen } from '@/screens';
+import { NotifyScreen, ProductScreen, SelectTableScreen } from '@/screens';
 
 export type AppStackParamList = {
   AppTabNavigator: NavigatorScreenParams<AppTabBottomTabParamList>;
   ProductScreen: { product: Detail };
   SelectTableScreen: undefined;
+  NotifyScreen: undefined;
 };
 
 export function AppStack() {
@@ -33,6 +34,7 @@ export function AppStack() {
           presentation: 'modal',
         }}
       />
+      <Screen name="NotifyScreen" component={NotifyScreen} />
     </Navigator>
   );
 }

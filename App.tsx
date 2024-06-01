@@ -6,13 +6,12 @@ import {
 } from '@expo-google-fonts/roboto';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { StatusBar } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Toast from 'react-native-toast-message';
 
 import { Loading } from '@/components';
 import { Routes } from '@/routes';
 import './global.css';
-
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const queryClient = new QueryClient();
 
