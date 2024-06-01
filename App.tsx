@@ -4,14 +4,16 @@ import {
   Roboto_700Bold,
   useFonts,
 } from '@expo-google-fonts/roboto';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { StatusBar } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Toast from 'react-native-toast-message';
 
 import { Loading } from '@/components';
 import { Routes } from '@/routes';
 import './global.css';
 
-import 'react-native-gesture-handler';
+const queryClient = new QueryClient();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -23,8 +25,12 @@ export default function App() {
   return (
     <>
       <StatusBar barStyle="light-content" />
-      {fontsLoaded ? <Routes /> : <Loading />}
-      <Toast />
+      <QueryClientProvider client={queryClient}>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          {fontsLoaded ? <Routes /> : <Loading />}
+          <Toast />
+        </GestureHandlerRootView>
+      </QueryClientProvider>
     </>
   );
 }

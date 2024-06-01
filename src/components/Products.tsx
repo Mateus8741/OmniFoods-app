@@ -23,7 +23,13 @@ type ProductProps = TouchableOpacityProps & {
 export const Products = forwardRef<TouchableOpacity, ProductProps>(({ data, ...rest }, ref) => {
   return (
     <TouchableOpacity ref={ref} className="w-full flex-row items-center pb-4" {...rest}>
-      <Image source={data.thumbnail} className="h-20 w-20 rounded-md" alt="" />
+      <Image
+        source={{
+          uri: String(data.thumbnail),
+        }}
+        className="h-20 w-20 rounded-md"
+        alt=""
+      />
 
       <View className="ml-3 flex-1">
         <View className="flex-row items-center">

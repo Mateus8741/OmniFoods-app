@@ -7,6 +7,8 @@ import {
   View,
 } from 'react-native';
 
+import { colors } from '@/theme/colors';
+
 export interface TextInputProps extends RNTextInputProps {
   label?: string;
   rightComponent?: ReactElement;
@@ -30,14 +32,14 @@ export function TextInput({
   }
 
   return (
-    <View className={`mb-3 ${moreClassName}`}>
+    <View className={`mb-3 rounded-full border-2 border-gray-500 ${moreClassName}`}>
       <Pressable onPress={focusInput}>
         {label && <Text className="mb-2 text-white">{label}</Text>}
         <View className="w-full flex-row items-center rounded-3xl bg-gray-1000 py-2">
           {leftComponent && <View className="mx-2 justify-center">{leftComponent}</View>}
           <RNTextInput
             className="px-5 py-2 text-white"
-            placeholderTextColor="white"
+            placeholderTextColor={colors.gray.subtitle}
             autoCapitalize="none"
             cursorColor="white"
             ref={inputRef}

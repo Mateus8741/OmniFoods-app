@@ -4,13 +4,14 @@ import React from 'react';
 
 import { AppTabBottomTabParamList, AppTabNavigator } from './BottomTabsNavigation/AppTabNavigator';
 
-import { ProductProps } from '@/mock';
-import { ProductScreen, SelectTableScreen } from '@/screens';
+import { Detail } from '@/models/ProductModel';
+import { NotifyScreen, ProductScreen, SelectTableScreen } from '@/screens';
 
 export type AppStackParamList = {
   AppTabNavigator: NavigatorScreenParams<AppTabBottomTabParamList>;
-  ProductScreen: { product: ProductProps };
+  ProductScreen: { product: Detail };
   SelectTableScreen: undefined;
+  NotifyScreen: undefined;
 };
 
 export function AppStack() {
@@ -33,6 +34,7 @@ export function AppStack() {
           presentation: 'modal',
         }}
       />
+      <Screen name="NotifyScreen" component={NotifyScreen} />
     </Navigator>
   );
 }
