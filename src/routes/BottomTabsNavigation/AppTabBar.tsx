@@ -8,14 +8,15 @@ import { mapScreenToProps } from './mapScreenToProps';
 
 import { CustonIcons } from '@/components';
 import { useAppSafeArea } from '@/hooks';
-import { colors } from '@/theme/colors';
 import { useShadowProps } from '@/utils';
 
 export function AppTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
   const { bottom } = useAppSafeArea();
 
   return (
-    <View className="bg-bgColor-800 flex-row" style={[{ paddingBottom: bottom }, useShadowProps()]}>
+    <View
+      className="absolute bottom-0 flex-row rounded-3xl bg-gray-1000 p-3"
+      style={[{ paddingBottom: bottom }, useShadowProps()]}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
 
@@ -55,8 +56,8 @@ export function AppTabBar({ state, descriptors, navigation }: BottomTabBarProps)
             activeOpacity={1}
             className={
               isFocused
-                ? 'border-lemon-300 flex-row items-center justify-center border-t-2 pt-3'
-                : 'items-center justify-center pt-3'
+                ? 'flex-row items-center justify-center rounded-xl bg-gray-light/35 py-3'
+                : 'items-center justify-center py-3'
             }
             accessibilityRole="button"
             accessibilityState={isFocused ? { selected: true } : {}}
@@ -66,15 +67,15 @@ export function AppTabBar({ state, descriptors, navigation }: BottomTabBarProps)
             onLongPress={onLongPress}
             style={{ flex: 1 }}>
             <CustonIcons
-              color={isFocused ? colors.bg : colors.gray.light}
+              color="white"
               icon={isFocused ? tabItem.icon.focused : tabItem.icon.unfocused}
               entering={animation || undefined}
               size={20}
             />
             {isFocused && (
               <Animated.Text
-                className="font-500 ml-3 text-xs"
-                style={{ color: colors.bg }}
+                className="ml-3 font-bold text-sm"
+                style={{ color: 'white' }}
                 entering={animation || undefined}>
                 {tabItem.label}
               </Animated.Text>

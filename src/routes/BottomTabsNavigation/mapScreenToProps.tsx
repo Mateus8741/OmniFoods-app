@@ -26,4 +26,11 @@ export const mapScreenToProps: Record<
       unfocused: 'home',
     },
   },
+  CartScreen: {
+    label: 'Carrinho',
+    icon: {
+      focused: 'shopping-cart',
+      unfocused: 'shopping-cart',
+    },
+  },
 };

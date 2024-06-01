@@ -1,35 +1,42 @@
 {
   "expo": {
-    "name": "no-name-project",
-    "slug": "no-name-project",
+    "name": "OmniFoods",
+    "slug": "OmniFoods",
     "version": "1.0.0",
-
     "web": {
       "favicon": "./assets/favicon.png"
     },
-
     "experiments": {
       "tsconfigPaths": true
     },
-
-    "plugins": [],
-
+    "plugins": [
+      "expo-font"
+    ],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#151518"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.OmniFoods"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#151518"
+      },
+      "package": "com.OmniFoods"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "62d98e8c-9a29-408b-87cf-6405b0ee2b98"
       }
     }
   }
