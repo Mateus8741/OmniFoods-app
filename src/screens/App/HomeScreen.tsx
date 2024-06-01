@@ -9,6 +9,7 @@ import { AppTabScreenProps } from '@/routes';
 
 export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
   const { data } = useGetAllProducts();
+
   const CATEGORIES = data?.data.map((product) => product.title);
 
   const MENU = data?.data.map((product) => ({
@@ -60,11 +61,7 @@ export function HomeScreen({ navigation }: AppTabScreenProps<'HomeScreen'>) {
 
   return (
     <Box>
-      <Header
-        hasNotification
-        fullName="Mateus Tavares"
-        urlImage="https://github.com/Mateus8741.png"
-      />
+      <Header fullName="Mateus Tavares" urlImage="https://github.com/Mateus8741.png" />
 
       <TextInput
         placeholder="Buscar produtos"

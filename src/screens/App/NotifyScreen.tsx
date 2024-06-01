@@ -18,7 +18,13 @@ export function NotifyScreen({ navigation }: AppScreenProps<'NotifyScreen'>) {
     return <NofityCard tableNumber={tableNumber} time={FormatDate(updatedAt as string)} />;
   }
 
-  const ordersCompleted = data?.data.filter((order) => order.status === 'COMPLETED');
+  const now = new Date();
+  const oneHourAgo = new Date(now.getTime() - 11 * 60 * 1000);
+
+  const ordersCompleted = data?.data.filter((order) => {
+    const updatedAtDate = order.updatedAt ? new Date(order.updatedAt) : null;
+    return order.status === 'COMPLETED' && updatedAtDate && updatedAtDate >= oneHourAgo;
+  });
 
   return (
     <Box>
@@ -32,14 +38,15 @@ export function NotifyScreen({ navigation }: AppScreenProps<'NotifyScreen'>) {
         <Text className="font-bold text-2xl text-white">Notificações</Text>
       </View>
 
-      <View className="flex-1 items-center justify-center">
-        <Text className="font-bold text-xl text-gray-subtitle">Nenhuma pedido pronto</Text>
-      </View>
-
       <FlatList
         data={ordersCompleted}
         keyExtractor={(item) => String(item.id)}
         renderItem={({ item }) => renderItem(item)}
+        ListEmptyComponent={
+          <Text className="text-center font-bold text-xl text-gray-subtitle">
+            Nenhum pedido pronto
+          </Text>
+        }
       />
     </Box>
   );

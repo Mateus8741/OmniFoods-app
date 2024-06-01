@@ -2,6 +2,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { Image, Pressable, Text, View } from 'react-native';
 
+
 type HeaderProps = {
   fullName: string;
   hasNotification?: boolean;
