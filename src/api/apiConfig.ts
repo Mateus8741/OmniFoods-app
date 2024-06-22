@@ -20,3 +20,7 @@ export function createOrder(path: string, order: Order) {
 export function getOrders() {
   return api.get<Order[]>('/list-all-orders');
 }
+
+export function login(email: string, password: string) {
+  return api.post('/auth/login', { email, password });
+}
