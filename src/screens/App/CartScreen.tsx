@@ -58,6 +58,7 @@ export function CartScreen({ navigation }: AppTabScreenProps<'CartScreen'>) {
 
         tableNumber: Number(table?.value),
         changeToOrder,
+        status: 'PENDING',
       };
 
       mutate(order);
