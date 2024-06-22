@@ -15,7 +15,7 @@ export function AppTabBar({ state, descriptors, navigation }: BottomTabBarProps)
 
   return (
     <View
-      className="absolute bottom-0 flex-row rounded-3xl bg-gray-1000 p-3"
+      className="absolute bottom-0 flex-row rounded-t-3xl bg-gray-1000 p-3"
       style={[{ paddingBottom: bottom }, useShadowProps()]}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
