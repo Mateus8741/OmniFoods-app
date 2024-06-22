@@ -141,7 +141,7 @@ export function CartScreen({ navigation }: AppTabScreenProps<'CartScreen'>) {
 
               <View className="flex-row justify-between">
                 <Text className="text-lg text-white">Garçon</Text>
-                <Text className="font-bold text-lg text-white">R$ 5.00</Text>
+                <Text className="font-bold text-lg text-white">R$ 1.50</Text>
               </View>
 
               <View className="flex-row justify-between">
