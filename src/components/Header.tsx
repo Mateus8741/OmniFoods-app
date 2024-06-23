@@ -4,8 +4,11 @@ import { Image, Pressable, Text, View } from 'react-native';
 
 import Logo from '../assets/Logo.png';
 
+import { useUserStorage } from '@/contexts/userStore';
+
 export function Header() {
   const { navigate } = useNavigation();
+  const { user } = useUserStorage();
 
   function handleNotification() {
     navigate('NotifyScreen');
@@ -20,7 +23,7 @@ export function Header() {
           <Text className="font-bold text-sm text-gray-subtitle">Comanda Eletrônica</Text>
 
           <View className="flex-row">
-            <Text className="font-bold text-base text-white">Comanda Principal</Text>
+            <Text className="font-bold text-base text-white">{user?.email}</Text>
           </View>
         </View>
       </View>
