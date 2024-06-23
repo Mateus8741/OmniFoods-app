@@ -19,8 +19,6 @@ export function useLogin(onSuccess: () => void) {
         token: data?.data.token,
         email: data?.data.email,
       });
-
-      console.log(data?.data);
     },
   });
 
