@@ -31,7 +31,7 @@ export function LoginScreen({ navigation }: AuthScreenProps<'LoginScreen'>) {
       email: '',
       password: '',
     },
-    mode: 'onChange',
+    mode: 'onSubmit',
   });
 
   function handleLogin(data: LoginScheema) {
