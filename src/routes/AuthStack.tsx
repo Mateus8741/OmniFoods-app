@@ -14,7 +14,7 @@ export function AuthStack() {
 
   return (
     <Navigator
-      initialRouteName="OnboardingScreen"
+      initialRouteName="LoginScreen"
       screenOptions={{
         headerShown: false,
         fullScreenGestureEnabled: true,
