@@ -93,7 +93,13 @@ export function CartScreen({ navigation }: AppTabScreenProps<'CartScreen'>) {
         {products.length !== 0 ? (
           <>
             <View className="mb-6 rounded-3xl bg-gray-1000/70 p-5">
-              <Text className="text-md mb-3 font-bold text-white">Resumo do pedido</Text>
+              <View className="mb-5 flex-row items-center justify-between">
+                <Text className="text-md font-bold text-white">Resumo do pedido</Text>
+
+                <TouchableOpacity onPress={clearCart} hitSlop={10}>
+                  <Text className="text-md font-bold text-red-500">Limpar carrinho</Text>
+                </TouchableOpacity>
+              </View>
 
               <View className="max-h-96">
                 <ScrollView className="mb-5" showsVerticalScrollIndicator={false}>
