@@ -32,15 +32,21 @@ export function Header() {
         </View>
       </View>
 
-      <Pressable onPress={handleNotification} className="relative">
-        <MaterialCommunityIcons name="bell" size={24} color="white" />
+      <View className="flex-row items-center gap-x-9">
+        <Pressable hitSlop={10} onPress={() => {}}>
+          <MaterialCommunityIcons name="logout" size={24} color="white" />
+        </Pressable>
 
-        {filter?.length ? (
-          <View className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500">
-            <Text className="font-bold text-xs text-white">{filter?.length}</Text>
-          </View>
-        ) : null}
-      </Pressable>
+        <Pressable onPress={handleNotification} className="relative" hitSlop={10}>
+          <MaterialCommunityIcons name="bell" size={24} color="white" />
+
+          {filter?.length ? (
+            <View className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500">
+              <Text className="font-bold text-xs text-white">{filter?.length}</Text>
+            </View>
+          ) : null}
+        </Pressable>
+      </View>
     </View>
   );
 }
