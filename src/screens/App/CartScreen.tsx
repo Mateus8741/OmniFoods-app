@@ -123,7 +123,7 @@ export function CartScreen({ navigation }: AppTabScreenProps<'CartScreen'>) {
                     <Text className="font-bold text-lg text-white">{table.value}</Text>
                   </>
                 ) : (
-                  <Text className="font-bold text-lg text-white">Escolher mesa</Text>
+                  <Text className="font-bold text-lg text-white">Aperte para escolher mesa</Text>
                 )}
               </TouchableOpacity>
 
