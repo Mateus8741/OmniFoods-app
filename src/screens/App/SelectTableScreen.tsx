@@ -26,7 +26,7 @@ export function SelectTableScreen({ navigation }: AppScreenProps<'SelectTableScr
 
       <View className="flex-1 flex-row flex-wrap justify-center">
         {tables.map((item) => (
-          <View key={item.id} className="h-20 w-20 items-center justify-center p-3">
+          <View key={item.id} className="h-20 w-20 items-center justify-center">
             <BouncyCheckbox
               text={item.value}
               size={30}
@@ -41,7 +41,6 @@ export function SelectTableScreen({ navigation }: AppScreenProps<'SelectTableScr
                 fontSize: 16,
                 fontWeight: 'bold',
                 marginLeft: -10,
-                direction: 'ltr',
               }}
               isChecked={selectedTable === item}
               onPress={() => setSelectedTable(item)}

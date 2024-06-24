@@ -58,6 +58,7 @@ export function CartScreen({ navigation }: AppTabScreenProps<'CartScreen'>) {
 
         tableNumber: Number(table?.value),
         changeToOrder,
+        status: 'PENDING',
       };
 
       mutate(order);
@@ -92,7 +93,13 @@ export function CartScreen({ navigation }: AppTabScreenProps<'CartScreen'>) {
         {products.length !== 0 ? (
           <>
             <View className="mb-6 rounded-3xl bg-gray-1000/70 p-5">
-              <Text className="text-md mb-3 font-bold text-white">Resumo do pedido</Text>
+              <View className="mb-5 flex-row items-center justify-between">
+                <Text className="text-md font-bold text-white">Resumo do pedido</Text>
+
+                <TouchableOpacity onPress={clearCart} hitSlop={10}>
+                  <Text className="text-md font-bold text-red-500">Limpar carrinho</Text>
+                </TouchableOpacity>
+              </View>
 
               <View className="max-h-96">
                 <ScrollView className="mb-5" showsVerticalScrollIndicator={false}>
@@ -116,7 +123,7 @@ export function CartScreen({ navigation }: AppTabScreenProps<'CartScreen'>) {
                     <Text className="font-bold text-lg text-white">{table.value}</Text>
                   </>
                 ) : (
-                  <Text className="font-bold text-lg text-white">Escolher mesa</Text>
+                  <Text className="font-bold text-lg text-white">Aperte para escolher mesa</Text>
                 )}
               </TouchableOpacity>
 
@@ -140,7 +147,7 @@ export function CartScreen({ navigation }: AppTabScreenProps<'CartScreen'>) {
 
               <View className="flex-row justify-between">
                 <Text className="text-lg text-white">Garçon</Text>
-                <Text className="font-bold text-lg text-white">R$ 5.00</Text>
+                <Text className="font-bold text-lg text-white">R$ 1.50</Text>
               </View>
 
               <View className="flex-row justify-between">
