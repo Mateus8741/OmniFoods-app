@@ -9,11 +9,15 @@ import { useUserStorage } from '@/contexts/userStore';
 
 export function Header() {
   const { navigate } = useNavigation();
-  const { user } = useUserStorage();
+  const { user, removeUser } = useUserStorage();
   const { data } = useNotify();
 
   function handleNotification() {
     navigate('NotifyScreen');
+  }
+
+  function logOut() {
+    removeUser();
   }
 
   const filter = data?.data.filter((order) => order.status === 'COMPLETED');
@@ -33,7 +37,7 @@ export function Header() {
       </View>
 
       <View className="flex-row items-center gap-x-9">
-        <Pressable hitSlop={10} onPress={() => {}}>
+        <Pressable hitSlop={10} onPress={logOut}>
           <MaterialCommunityIcons name="logout" size={24} color="white" />
         </Pressable>
 
