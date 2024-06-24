@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 import { Order } from '@/models/OrderModel';
 import { Product } from '@/models/ProductModel';
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: 'https://omnifoods-back.onrender.com',
 });
 
@@ -23,4 +23,8 @@ export function getOrders() {
 
 export function login(email: string, password: string) {
   return api.post('/auth/login', { email, password });
+}
+
+export function refreshToken(token: string) {
+  return api.post('/auth/refresh-token', { token });
 }
