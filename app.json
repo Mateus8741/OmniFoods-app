@@ -32,12 +32,19 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#151518"
       },
-      "package": "com.OmniFoods"
+      "package": "com.OmniFoods",
+      "versionCode": 2
     },
     "extra": {
       "eas": {
         "projectId": "62d98e8c-9a29-408b-87cf-6405b0ee2b98"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/62d98e8c-9a29-408b-87cf-6405b0ee2b98"
     }
   }
 }

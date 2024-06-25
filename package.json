@@ -24,6 +24,7 @@
     "expo-dev-client": "~3.3.12",
     "expo-font": "~11.10.3",
     "expo-status-bar": "~1.11.1",
+    "expo-updates": "~0.24.13",
     "nativewind": "^4.0.1",
     "react": "18.2.0",
     "react-hook-form": "^7.51.3",
