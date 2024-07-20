@@ -42,9 +42,7 @@ export function LoginScreen({ navigation }: AuthScreenProps<'LoginScreen'>) {
 
   return (
     <ImageBackground source={Background} className="flex-1">
-      <View
-        className="flex-1 rounded-2xl bg-black/60 bg-opacity-50 p-5"
-        style={{ paddingTop: top }}>
+      <View className="flex-1 bg-black/60 bg-opacity-50 p-5" style={{ paddingTop: top }}>
         <Image source={Omni} className="-mx-5 mt-32 h-40 w-full self-center" resizeMode="contain" />
 
         <View className="mt-20 flex-1 items-center gap-y-2">
