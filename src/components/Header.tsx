@@ -20,7 +20,13 @@ export function Header() {
     removeUser();
   }
 
-  const filter = data?.data.filter((order) => order.status === 'COMPLETED');
+  const now = new Date();
+  const oneHourAgo = new Date(now.getTime() - 11 * 60 * 1000);
+
+  const ordersCompleted = data?.data.filter((order) => {
+    const updatedAtDate = order.updatedAt ? new Date(order.updatedAt) : null;
+    return order.status === 'COMPLETED' && updatedAtDate && updatedAtDate >= oneHourAgo;
+  });
 
   return (
     <View className="mb-8 flex-row items-center justify-between border-b-2 border-gray-light pb-6">
@@ -44,9 +50,9 @@ export function Header() {
         <Pressable onPress={handleNotification} className="relative" hitSlop={10}>
           <MaterialCommunityIcons name="bell" size={24} color="white" />
 
-          {filter?.length ? (
+          {ordersCompleted?.length ? (
             <View className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500">
-              <Text className="font-bold text-xs text-white">{filter?.length}</Text>
+              <Text className="font-bold text-xs text-white">{ordersCompleted?.length}</Text>
             </View>
           ) : null}
         </Pressable>
