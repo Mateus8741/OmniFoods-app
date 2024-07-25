@@ -32,7 +32,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#151518"
       },
-      "package": "com.OmniFoods"
+      "package": "com.OmniFoods",
+      "versionCode": 2
     },
     "extra": {
       "eas": {
